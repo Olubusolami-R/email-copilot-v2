@@ -12,7 +12,7 @@ def detect_intent(text:str)->EmailIntent:
         return EmailIntent.MEETING
     if "thank" in email_lower or "appreciate" in email_lower:
         return EmailIntent.THANKS
-    if "follow up" in email_lower or "following up" in email_lower or "checking up":
+    if "follow up" in email_lower or "following up" in email_lower or "checking up" in email_lower:
         return EmailIntent.FOLLOW_UP
     return EmailIntent.UNKNOWN
 
@@ -43,9 +43,10 @@ def generate_reply_for_intent(intent:EmailIntent)->tuple[str,float]:
 def generate_draft_reply(email_body:str)->dict:
     intent=detect_intent(email_body)
     draft, confidence=generate_reply_for_intent(intent)
-    return{
+    return {
         "draft":draft,
         "confidence":confidence,
+        "intent":intent.value,
         "needs_review":confidence < 0.8
     }
 

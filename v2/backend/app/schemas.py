@@ -7,5 +7,6 @@ class DraftReplyRequest(BaseModel):
 
 class DraftReplyResponse(BaseModel):
     draft: str
+    intent: str
     confidence: float
     needs_review: bool
