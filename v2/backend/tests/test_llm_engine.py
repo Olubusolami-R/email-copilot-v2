@@ -2,6 +2,7 @@ from unittest.mock import patch
 
 from app.services.drafting_engine import LLMDraftingEngine
 
+#the rule: to test a layer, mocj the layer underneath, generate_llm_reply in this case
 
 def test_llm_engine_returns_valid_response():
     with patch(

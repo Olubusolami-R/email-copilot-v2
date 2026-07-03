@@ -2,6 +2,7 @@ from unittest.mock import Mock, patch
 
 from app.services.llm_client import LLMClient
 
+#the rule: to test a layer, mocj the layer underneath, requests.post in this case
 
 def test_llm_client_returns_message_content_from_ollama_response():
     fake_response = Mock()
