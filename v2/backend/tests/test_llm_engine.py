@@ -21,3 +21,4 @@ def test_llm_engine_returns_valid_response():
 
     assert result["intent"] == "llm_generated"
     assert result["needs_review"] is True
+
