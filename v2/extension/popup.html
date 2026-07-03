@@ -8,7 +8,10 @@
     <h1>EmailCopilot</h1>
 
     <label for="emailBody">Email text</label>
-    <textarea id="emailBody" placeholder="Paste the email you want to reply to..."></textarea>
+    <textarea
+      id="emailBody"
+      placeholder="Select text on the page, then open this extension. Or paste email text here..."
+    ></textarea>
 
     <button id="generateButton">Generate reply</button>
 
@@ -16,10 +19,11 @@
 
     <label for="draftReply">Draft reply</label>
     <textarea id="draftReply" readonly></textarea>
+
     <button id="copyButton">Copy draft</button>
+
     <div id="metadata"></div>
 
     <script src="popup.js"></script>
   </body>
 </html>
-
