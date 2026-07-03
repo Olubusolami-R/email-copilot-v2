@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 from app.services.draft_service import generate_draft_reply
-
+from app.services.llm_client import LLMClient
 
 class DraftingEngine(ABC):
     @abstractmethod
@@ -14,9 +14,13 @@ class RuleBasedDraftingEngine(DraftingEngine):
         return generate_draft_reply(email_body)
 
 class LLMDraftingEngine(DraftingEngine):
+    def __init__(self):
+        self.client=LLMClient()
+
     def generate(self, email_body: str) -> dict:
+        draft=self.client.generate_llm_reply(email_body)
         return{
-            "draft": "This is a placeholder LLM-generated draft. Real LLM integration coming next.",
+            "draft": draft,
             "confidence": 0.6,
             "intent": "llm_placeholder",
             "needs_review": True
