@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 
 from app.schemas import DraftReplyRequest, DraftReplyResponse
-from app.services.draft_service import generate_draft_reply
+from app.services.drafting_engine import RuleBasedDraftingEngine
 
 
 app = FastAPI(title="EmailCopilot API")
-
+drafting_engine=RuleBasedDraftingEngine()
 
 @app.get("/")
 def health_check():
@@ -13,4 +13,4 @@ def health_check():
 
 @app.post("/draft-reply", response_model=DraftReplyResponse)
 def draft_reply(request: DraftReplyRequest):
-    return generate_draft_reply(request.email_body)
+    return drafting_engine.generate(request.email_body)
